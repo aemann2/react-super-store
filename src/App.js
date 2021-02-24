@@ -12,10 +12,17 @@ function App() {
     <Router>
       <div className='App'>
         <Navbar />
+        {/* this is the current recommended pattern for creating routes in React */}
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/deals' component={Deals} />
-          <Route exact path='/cart' component={Cart} />
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/deals'>
+            <Deals />
+          </Route>
+          <Route exact path='/cart'>
+            <Cart />
+          </Route>
         </Switch>
       </div>
     </Router>
