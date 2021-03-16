@@ -1,10 +1,11 @@
 import React from 'react';
+import Items from '../items/Items';
 
 const Deals = () => {
   return (
-    <div>
-      <p>This is the deals page</p>
-    </div>
+    <main className='main'>
+      <Items />
+    </main>
   );
 };
 
