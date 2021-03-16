@@ -1,12 +1,26 @@
+import { useState, useEffect } from 'react';
 import './css/App.css';
+import axios from 'axios';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Deals from './components/pages/Deals';
 import Cart from './components/pages/Cart';
-//importing react router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
+  // lifting up the items state so the results can be passed to child pages
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(
+        'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc'
+      );
+      setItems(response.data.items);
+    }
+    fetchData();
+  }, []);
+
   return (
     // wrapping page content in the router
     <Router>
@@ -15,10 +29,10 @@ function App() {
         {/* this is the current recommended pattern for creating routes in React */}
         <Switch>
           <Route exact path='/'>
-            <Home />
+            <Home items={items} />
           </Route>
           <Route exact path='/deals'>
-            <Deals />
+            <Deals items={items} />
           </Route>
           <Route exact path='/cart'>
             <Cart />

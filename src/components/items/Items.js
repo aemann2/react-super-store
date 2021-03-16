@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Item from './Item';
-import axios from 'axios';
 
-const Items = () => {
-  const [items, setItems] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(
-        'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc'
-      );
-      setItems(response.data.items);
-    }
-    fetchData();
-  }, []);
+const Items = (props) => {
+  const { items } = props;
 
   return (
     <div className='card-container'>
