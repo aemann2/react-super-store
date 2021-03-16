@@ -2,7 +2,11 @@ import React from 'react';
 import Items from '../items/Items';
 
 const Home = () => {
-  return <Items />;
+  return (
+    <main className='main'>
+      <Items />
+    </main>
+  );
 };
 
 export default Home;

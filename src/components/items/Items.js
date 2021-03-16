@@ -14,10 +14,8 @@ const Items = () => {
 
   useEffect(() => fetchData(), []);
 
-  console.log(items);
-
   return (
-    <div>
+    <div className='card-container'>
       {items &&
         items.map((item) => {
           const { _id, name, imageUrl: img, price } = item;
@@ -28,23 +26,3 @@ const Items = () => {
 };
 
 export default Items;
-
-// <div>
-// {items &&
-//   items.map((item, index) => {
-//     const { name, imageUrl: img, price } = item;
-//     return (
-//       <div className='card' style={{ width: '18rem' }} key={index}>
-//         <img className='card-img-top' src={img} alt={name} />
-//         <div className='card-body'>
-//           <h5 className='card-title'>{name}</h5>
-//           <p>stars</p>
-//           <p>${price}</p>
-//           <a href='#' className='btn btn-primary'>
-//             View Item
-//           </a>
-//         </div>
-//       </div>
-//     );
-//   })}
-// </div>

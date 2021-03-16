@@ -9,7 +9,7 @@ function Item(props) {
   };
 
   return (
-    <div className='card' style={{ width: '18rem' }}>
+    <div className='card'>
       <img
         className='card-img-top'
         src={img}
@@ -20,7 +20,7 @@ function Item(props) {
         <h5 className='card-title'>{name}</h5>
         <p>stars</p>
         <p>${price}</p>
-        <a href='#' className='btn btn-primary'>
+        <a href='#' className='btn btn-primary btn-center'>
           View Item
         </a>
       </div>
