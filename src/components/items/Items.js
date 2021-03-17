@@ -8,10 +8,17 @@ const Items = (props) => {
     <div className='card-container'>
       {items &&
         items.map((item) => {
-          const { _id, avgRating: rating, name, imageUrl: img, price } = item;
+          const {
+            _id: id,
+            avgRating: rating,
+            name,
+            imageUrl: img,
+            price,
+          } = item;
           return (
             <Item
-              key={_id}
+              key={id}
+              id={id}
               name={name}
               img={img}
               price={price}

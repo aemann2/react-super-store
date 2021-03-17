@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Stars from './Stars';
 
 function Item(props) {
-  const { name, img, price, rating } = props;
+  const { id, name, img, price, rating } = props;
 
   const handleError = (e) => {
     e.target.src = 'https://demofree.sirv.com/nope-not-here.jpg';
@@ -21,9 +22,9 @@ function Item(props) {
         <h5 className='card-title'>{name}</h5>
         <Stars rating={rating} />
         <p>${price}</p>
-        <a href='#' className='btn btn-primary btn-center'>
+        <Link to={`/item/${id}`} className='btn btn-primary btn-center'>
           View Item
-        </a>
+        </Link>
       </div>
     </div>
   );

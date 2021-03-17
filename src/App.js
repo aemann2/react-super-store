@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Deals from './components/pages/Deals';
 import Cart from './components/pages/Cart';
+import ItemPage from './components/pages/ItemPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact path='/cart'>
             <Cart />
+          </Route>
+          <Route exact path='/item/:itemId'>
+            <ItemPage />
           </Route>
         </Switch>
       </div>
