@@ -1,6 +1,21 @@
-nav {
-  text-align: center;
+// Global styles //
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
 }
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Main styles
 
 .main {
   display: flex;
@@ -19,7 +34,9 @@ nav {
 }
 
 .card-img-top {
-  height: 50%;
+  margin: 0 auto;
+  height: 12rem;
+  width: auto;
   padding: 1rem;
 }
 
@@ -37,7 +54,18 @@ nav {
   flex-direction: column;
 }
 
+.--space {
+  margin-left: 1rem;
+  margin-right: -2rem;
+}
+
+.--nav-space {
+  margin-left: 1rem;
+}
+
 .btn-center {
   align-self: center;
   margin-top: auto;
 }
+
+// Media Queries

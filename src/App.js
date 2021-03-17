@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './css/App.css';
+import './css/style.css';
 import axios from 'axios';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
@@ -13,12 +13,21 @@ function App() {
   const [items, setItems] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(
-        'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc'
-      );
-      setItems(response.data.items);
-    }
+    const fetchData = async () => {
+      await axios
+        .get('https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc')
+        .then((response) => setItems(response.data.items))
+        // using proper error handling
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response);
+          } else if (err.request) {
+            console.log(err.request);
+          } else {
+            console.log('There has been an error');
+          }
+        });
+    };
     fetchData();
   }, []);
 
@@ -38,6 +47,7 @@ function App() {
           <Route exact path='/cart'>
             <Cart />
           </Route>
+          {/* routing with a page URL based on the item ID */}
           <Route path='/item/:id'>
             <ItemPage />
           </Route>

@@ -6,7 +6,14 @@ export default function Navbar() {
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
       <NavLink to='/' className='navbar-brand' href='/'>
-        <img src={store} width='30' height='30' alt='' />
+        <img
+          src={store}
+          width='30'
+          height='30'
+          alt=''
+          className='d-inline-block align-top'
+        />
+        <span className='--nav-space'>Super Store</span>
       </NavLink>
       <button
         className='navbar-toggler'

@@ -1,39 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import full from './stars/full.svg';
+import half from './stars/half.svg';
+import empty from './stars/empty.svg';
 
 const Stars = (props) => {
   const { rating } = props;
 
   const stars = [];
-
+  // a loop to push stars to the above array based on rating
   for (let i = stars.length; i < 5; i++) {
     if (i < rating && i - rating + 1 !== 0.5) {
-      stars.push(
-        <img
-          src='https://guidedprojects.dev/assets/files/star_full-f757f2a6eb46312ac3b0a9f4923add12.svg'
-          alt='full_star'
-          key={i}
-        />
-      );
+      stars.push(<img src={full} alt='full_star' key={i} />);
     } else if (i - rating + 1 === 0.5) {
-      stars.push(
-        <img
-          src='https://guidedprojects.dev/assets/files/star-half-c86abc67a14feafe9a821fd5e06e5833.svg'
-          alt='half_star'
-          key={i}
-        />
-      );
+      stars.push(<img src={half} alt='half_star' key={i} />);
     } else {
-      stars.push(
-        <img
-          src='https://guidedprojects.dev/assets/files/star-empty-849812a23c4515e156571518674ae723.svg'
-          alt='empty_star'
-          key={i}
-        />
-      );
+      stars.push(<img src={empty} alt='empty_star' key={i} />);
     }
   }
 
   return <div>{stars}</div>;
+};
+
+Stars.propTypes = {
+  rating: PropTypes.number.isRequired,
 };
 
 export default Stars;

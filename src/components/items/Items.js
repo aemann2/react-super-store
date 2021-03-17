@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './Item';
+import PropTypes from 'prop-types';
 
 const Items = (props) => {
   const { items } = props;
@@ -14,6 +15,7 @@ const Items = (props) => {
             name,
             imageUrl: img,
             price,
+            isOnSale: sale,
           } = item;
           return (
             <Item
@@ -23,11 +25,16 @@ const Items = (props) => {
               img={img}
               price={price}
               rating={rating}
+              sale={sale}
             />
           );
         })}
     </div>
   );
+};
+
+Items.propTypes = {
+  items: PropTypes.array,
 };
 
 export default Items;
