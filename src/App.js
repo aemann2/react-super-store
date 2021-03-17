@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './css/App.css';
 import axios from 'axios';
 import Navbar from './components/layout/Navbar';
@@ -6,7 +7,6 @@ import Home from './components/pages/Home';
 import Deals from './components/pages/Deals';
 import Cart from './components/pages/Cart';
 import ItemPage from './components/pages/ItemPage';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   // lifting up the items state so the results can be passed to child pages
@@ -38,7 +38,7 @@ function App() {
           <Route exact path='/cart'>
             <Cart />
           </Route>
-          <Route exact path='/item/:itemId'>
+          <Route path='/item/:id'>
             <ItemPage />
           </Route>
         </Switch>

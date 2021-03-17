@@ -19,7 +19,9 @@ function Item(props) {
         onError={handleError}
       />
       <div className='card-body'>
-        <h5 className='card-title'>{name}</h5>
+        <Link to={`/item/${id}`}>
+          <h5 className='card-title'>{name}</h5>
+        </Link>
         <Stars rating={rating} />
         <p>${price}</p>
         <Link to={`/item/${id}`} className='btn btn-primary btn-center'>

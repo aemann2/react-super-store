@@ -1,9 +1,9 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
-const Item = (props) => {
-  const { itemId } = props.match.params;
-  console.log(itemId);
-  return <div>{}</div>;
+const ItemPage = () => {
+  const params = useParams();
+  return <div>{params.id}</div>;
 };
 
-export default Item;
+export default ItemPage;
