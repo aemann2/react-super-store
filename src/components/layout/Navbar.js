@@ -13,7 +13,7 @@ export default function Navbar() {
           alt=''
           className='d-inline-block align-top'
         />
-        <span className='--nav-space'>Super Store</span>
+        <span style={{ marginLeft: '1rem' }}>Super Store</span>
       </NavLink>
       <button
         className='navbar-toggler'

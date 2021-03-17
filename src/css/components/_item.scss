@@ -1,0 +1,28 @@
+.card {
+  width: 18rem;
+  padding: 1rem;
+
+  &__img {
+    margin: 0 auto;
+    height: 12rem;
+    width: auto;
+    padding: 1rem;
+  }
+
+  &__body {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__btn {
+    align-self: center;
+    margin-top: auto;
+  }
+
+  &--space {
+    margin-left: 1rem;
+    margin-right: -2rem;
+  }
+}

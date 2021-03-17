@@ -15,7 +15,7 @@ html {
   padding: 0;
 }
 
-// Main styles
+// Main styles //
 
 .main {
   display: flex;
@@ -23,49 +23,14 @@ html {
   margin-top: 5rem;
 }
 
-.card {
-  width: 18rem;
-}
+// Component styles //
 
-.apology {
-  margin-top: 3rem;
-  margin-left: auto;
-  grid-column: 1/3;
-}
+@import './components/item';
 
-.card-img-top {
-  margin: 0 auto;
-  height: 12rem;
-  width: auto;
-  padding: 1rem;
-}
+@import './components/items';
 
-.card-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 1rem;
-  row-gap: 2rem;
-}
+@import './components/deals.scss';
 
-.card-body {
-  flex: 2;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
+// Media Queries //
 
-.--space {
-  margin-left: 1rem;
-  margin-right: -2rem;
-}
-
-.--nav-space {
-  margin-left: 1rem;
-}
-
-.btn-center {
-  align-self: center;
-  margin-top: auto;
-}
-
-// Media Queries
+@import 'media';

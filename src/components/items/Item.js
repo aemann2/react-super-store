@@ -14,24 +14,26 @@ function Item(props) {
   return (
     <div className='card border-dark'>
       <img
-        className='card-img-top'
+        className='card__img card-img-top'
         src={img}
         alt={name}
         onError={handleError}
       />
-      <div className='card-body'>
+      <div className='card__body'>
         <Link to={`/item/${id}`}>
-          <h5 className='card-title'>{name}</h5>
+          <h5 className='card__title card-title'>{name}</h5>
         </Link>
         <Stars rating={rating} />
-        <p className='card-price'>
+        <p className='card__price'>
           <b>${price}</b>
           {/* conditionally render the sale badge */}
           {sale && (
-            <span className='badge bg-danger text-light --space'>Sale!</span>
+            <span className='card--space badge bg-danger text-light '>
+              Sale!
+            </span>
           )}
         </p>
-        <Link to={`/item/${id}`} className='btn btn-primary btn-center'>
+        <Link to={`/item/${id}`} className='card__btn btn btn-primary'>
           View Item
         </Link>
       </div>
