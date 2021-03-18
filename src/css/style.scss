@@ -1,0 +1,36 @@
+// Global styles //
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Main styles //
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+// Component styles //
+
+@import './components/item';
+
+@import './components/items';
+
+@import './components/deals.scss';
+
+// Media Queries //
+
+@import 'media';
