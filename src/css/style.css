@@ -35,13 +35,10 @@ html {
   margin: 0 auto;
   height: 12rem;
   width: auto;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .card__body {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import full from './stars/full.svg';
-import half from './stars/half.svg';
-import empty from './stars/empty.svg';
+import full from '../../icons/full.svg';
+import half from '../../icons/half.svg';
+import empty from '../../icons/empty.svg';
 
 const Stars = (props) => {
   const { rating } = props;
