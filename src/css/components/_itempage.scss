@@ -1,0 +1,11 @@
+.item-page {
+  display: flex;
+  align-items: center;
+
+  &__image {
+    height: 400px;
+    width: 400px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

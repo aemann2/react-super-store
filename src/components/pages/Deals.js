@@ -13,6 +13,8 @@ const Deals = (props) => {
     fetchData(url, setDeals);
   }, [fetchData]);
 
+  console.log(deals);
+
   return (
     <main className='main'>
       <Items items={deals} />
