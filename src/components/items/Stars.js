@@ -19,7 +19,7 @@ const Stars = (props) => {
     }
   }
 
-  return <div>{stars}</div>;
+  return <div className='stars'>{stars}</div>;
 };
 
 Stars.propTypes = {

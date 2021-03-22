@@ -31,7 +31,7 @@ const ItemPage = () => {
   console.log(item);
 
   return (
-    <main className='main'>
+    <main className='main item-page-main'>
       {item &&
         item.map((item) => {
           const {
@@ -51,25 +51,29 @@ const ItemPage = () => {
               ></div>
               <div className='item-page__text'>
                 <h2 className='item-page__title'>{name}</h2>
-                <Stars className='item-page__rating' rating={rating} />
+                <div className='item-page__rating'>
+                  <Stars rating={rating} />
+                </div>
                 <hr className='item-page__hr' />
                 <p className='item-page__description'>{description}</p>
-                <p className='item-page__price'>${price}</p>
-                <form className='item-page__form row align-items-center'>
-                  <div className='col-auto'>
-                    <label htmlFor='quantity' className='font-weight-bold'>
-                      Quantity:
-                    </label>
-                  </div>
-                  <div className='col-sm-3'>
-                    <input
-                      type='text'
-                      className='item-page__quantity form-control text-center'
-                      id='quantity'
-                      placeholder='1'
-                    />
-                  </div>
-                </form>
+                <p className='item-page__price font-weight-bold'>${price}</p>
+                <div className='item-page__form-wrap'>
+                  <form className='item-page__form row align-items-center'>
+                    <div className='col-auto'>
+                      <label htmlFor='quantity' className='font-weight-bold'>
+                        Quantity:
+                      </label>
+                    </div>
+                    <div className='col-sm-2'>
+                      <input
+                        type='number'
+                        className='item-page__quantity form-control text-center'
+                        id='quantity'
+                        placeholder='1'
+                      />
+                    </div>
+                  </form>
+                </div>
                 <button
                   type='submit'
                   className='item-page__button btn btn-primary mt-3'
