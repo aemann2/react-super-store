@@ -13,10 +13,6 @@
 // mobile styles for item page
 
 @media only screen and (max-width: 900px) {
-  .item-page-main {
-    margin-top: 0;
-  }
-
   .item-page {
     flex-direction: column;
     width: 320px;
@@ -53,6 +49,7 @@
     }
 
     &__button {
+      margin-left: 1.5rem;
       margin-bottom: 1rem;
     }
   }
@@ -66,6 +63,11 @@
     &__form-wrap {
       align-self: center;
       width: 200px;
+    }
+
+    &__button {
+      margin-left: -1rem;
+      margin-bottom: 1rem;
     }
   }
 }

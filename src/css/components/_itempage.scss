@@ -6,7 +6,6 @@ label[for='quantity'] {
   display: flex;
   align-items: center;
   width: 900px;
-  padding: 1rem;
 
   &__title {
     font-size: 3rem;
@@ -29,7 +28,8 @@ label[for='quantity'] {
   }
 
   &__description,
-  &__price {
+  &__price,
+  &__stock {
     font-size: 2rem;
   }
 
