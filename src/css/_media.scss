@@ -52,6 +52,11 @@
       margin-left: 1.5rem;
       margin-bottom: 1rem;
     }
+
+    &__alert {
+      position: static;
+      order: 0;
+    }
   }
 }
 

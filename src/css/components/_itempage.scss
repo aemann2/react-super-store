@@ -3,6 +3,7 @@ label[for='quantity'] {
 }
 
 .item-page {
+  position: relative;
   display: flex;
   align-items: center;
   width: 900px;
@@ -35,5 +36,10 @@ label[for='quantity'] {
 
   &__button {
     font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__alert {
+    position: absolute;
   }
 }

@@ -7,6 +7,7 @@ const ItemPage = () => {
   const [item, setItem] = useState(null);
   const [cart, setCart] = useState(1);
   const [stock, setStock] = useState(null);
+  const [exceedsStock, setExceedsStock] = useState(false);
   // the useParams hook gets the id passed over in Link
   const { id } = useParams();
   const url = `https://gp-super-store-api.herokuapp.com/item/${id}`;
@@ -30,6 +31,7 @@ const ItemPage = () => {
     fetchData();
   }, [url]);
 
+  // Is this the right way to do this, or is there a better way to set the state of stock using async / await?
   useEffect(() => {
     setStock(item && item[0].stockCount);
   }, [item]);
@@ -40,7 +42,12 @@ const ItemPage = () => {
 
   const addItem = (e) => {
     e.preventDefault();
-    stock - cart < 0 ? console.log('fail') : setStock(stock - cart);
+    if (stock - cart < 0) {
+      setExceedsStock(true);
+    } else {
+      setStock(stock - cart);
+      setExceedsStock(false);
+    }
   };
 
   return (
@@ -100,6 +107,14 @@ const ItemPage = () => {
                     </button>
                   </form>
                 </div>
+                {exceedsStock && (
+                  <div
+                    className='item-page__alert alert alert-danger'
+                    role='alert'
+                  >
+                    You've selected more items than are in stock!
+                  </div>
+                )}
               </div>
             </div>
           );
