@@ -1,8 +1,8 @@
 import React from 'react';
-import Item from './Item';
+import ItemCard from './ItemCard';
 import PropTypes from 'prop-types';
 
-const Items = (props) => {
+const ItemList = (props) => {
   const { items } = props;
 
   return (
@@ -18,7 +18,7 @@ const Items = (props) => {
             isOnSale: sale,
           } = item;
           return (
-            <Item
+            <ItemCard
               key={id}
               id={id}
               name={name}
@@ -33,8 +33,8 @@ const Items = (props) => {
   );
 };
 
-Items.propTypes = {
+ItemList.propTypes = {
   items: PropTypes.array,
 };
 
-export default Items;
+export default ItemList;
