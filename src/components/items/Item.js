@@ -48,6 +48,9 @@ function Item(props) {
       setStock(stock - cart);
       setExceedsStock(false);
     }
+    // Setting the cart and the input value back to 1 after each submission. Is there a better way to do this?
+    setCart(1);
+    e.target[0].value = 1;
   };
 
   return (
@@ -96,7 +99,7 @@ function Item(props) {
                         min='0'
                         className='item-page__quantity form-control text-center'
                         id='quantity'
-                        defaultValue={cart}
+                        defaultValue='1'
                       />
                     </div>
                     <button
