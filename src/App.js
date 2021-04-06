@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './css/style.css';
 import axios from 'axios';
 import Navbar from './components/layout/Navbar';
-import Search from './components/search/Search';
+import Search from './components/layout/Search';
 import Home from './components/pages/Home';
 import Deals from './components/pages/Deals';
 import Cart from './components/pages/Cart';

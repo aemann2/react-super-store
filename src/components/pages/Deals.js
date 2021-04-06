@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ItemList from '../items/ItemList';
+import PageBtns from '../layout/PageBtns';
 
 const Deals = (props) => {
   const { fetchData } = props;
@@ -14,9 +15,12 @@ const Deals = (props) => {
   }, [fetchData]);
 
   return (
-    <main className='main'>
-      <ItemList items={deals} />
-    </main>
+    <>
+      <main className='main'>
+        <ItemList items={deals} />
+      </main>
+      {deals && <PageBtns />}
+    </>
   );
 };
 
