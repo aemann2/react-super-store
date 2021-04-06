@@ -1,0 +1,9 @@
+.search {
+  background-color: rgb(236, 219, 186);
+  padding: 0.5rem 0;
+  &--wrapper {
+    display: flex;
+    margin-left: 40%;
+    margin-right: auto;
+  }
+}
