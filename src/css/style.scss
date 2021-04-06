@@ -29,11 +29,9 @@ html {
 
 @import './components/items';
 
-@import './components/deals';
+@import './components/deals.scss';
 
-@import './components/search';
-
-@import './components/itempage';
+@import './components/itempage.scss';
 
 // Media Queries //
 
