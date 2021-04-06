@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Items from '../items/Items';
+import ItemList from '../items/ItemList';
 
 const Deals = (props) => {
   const { fetchData } = props;
@@ -13,9 +13,11 @@ const Deals = (props) => {
     fetchData(url, setDeals);
   }, [fetchData]);
 
+  console.log(deals);
+
   return (
     <main className='main'>
-      <Items items={deals} />
+      <ItemList items={deals} />
     </main>
   );
 };

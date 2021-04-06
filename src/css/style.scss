@@ -20,7 +20,7 @@ html {
 .main {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 // Component styles //
@@ -30,6 +30,8 @@ html {
 @import './components/items';
 
 @import './components/deals.scss';
+
+@import './components/itempage.scss';
 
 // Media Queries //
 

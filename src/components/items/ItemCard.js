@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Stars from './Stars';
 
-function Item(props) {
+function ItemCard(props) {
   const { id, name, img, price, rating, sale } = props;
 
   // error handling for images that return errors
@@ -41,7 +41,7 @@ function Item(props) {
   );
 }
 
-Item.propTypes = {
+ItemCard.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   img: PropTypes.string,
@@ -50,4 +50,4 @@ Item.propTypes = {
   sale: PropTypes.bool.isRequired,
 };
 
-export default Item;
+export default ItemCard;

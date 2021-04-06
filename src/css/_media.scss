@@ -9,3 +9,70 @@
     grid-template-columns: 1fr;
   }
 }
+
+// mobile styles for item page
+
+@media only screen and (max-width: 900px) {
+  .item-page {
+    flex-direction: column;
+    width: 320px;
+
+    &__image {
+      flex: none;
+      height: 200px;
+      width: 200px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin: 0;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &__description {
+      order: 5;
+    }
+
+    &__price {
+      order: 0;
+    }
+
+    &__quantity {
+      width: 80px;
+    }
+
+    &__form {
+      margin-left: 15%;
+    }
+
+    &__button {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    &__alert {
+      position: static;
+      order: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .item-page {
+    &__quantity {
+      width: 100px;
+    }
+    &__form-wrap {
+      align-self: center;
+      width: 200px;
+    }
+
+    &__button {
+      margin-left: -1rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+label[for='quantity'] {
+  font-size: 1.5rem;
+}
+
+.item-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 900px;
+
+  &__title {
+    font-size: 3rem;
+  }
+
+  &__rating > .stars > img {
+    height: 50px;
+  }
+
+  &__image {
+    flex: 1;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 3rem;
+  }
+
+  &__text {
+    flex: 2;
+  }
+
+  &__description,
+  &__price,
+  &__stock {
+    font-size: 2rem;
+  }
+
+  &__button {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__alert {
+    position: absolute;
+  }
+}

@@ -42,7 +42,7 @@ function App() {
             <Cart />
           </Route>
           {/* routing with a page URL based on the item ID */}
-          <Route path='/item/:id'>
+          <Route exact path='/item/:id'>
             <ItemPage />
           </Route>
         </Switch>
