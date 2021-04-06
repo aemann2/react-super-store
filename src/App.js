@@ -31,13 +31,14 @@ function App() {
     <Router>
       <div className='App'>
         <Navbar />
-        <Search />
         {/* this is the current recommended pattern for creating routes in React */}
         <Switch>
           <Route exact path='/'>
+            <Search fetchData={fetchData} />
             <Home fetchData={fetchData} />
           </Route>
           <Route exact path='/deals'>
+            <Search fetchData={fetchData} />
             <Deals fetchData={fetchData} />
           </Route>
           <Route exact path='/cart'>

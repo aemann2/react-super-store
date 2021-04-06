@@ -99,7 +99,6 @@ const ItemPage = () => {
                         min='0'
                         className='item-page__quantity form-control text-center'
                         id='quantity'
-                        defaultValue='1'
                         value={cart}
                         onChange={handleChange}
                       />
