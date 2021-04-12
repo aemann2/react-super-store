@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Search = (props) => {
-  const { fetchData } = props;
+const Search = ({ onSearch }) => {
   const [input, setInput] = useState('');
-  const [searchData, setSearchData] = useState(null);
-
-  // note: use the q? endpoint for the search
-  // the search itself should be handled in the Search component. Don't worry about the "Consuming components" thing
-
-  const url = `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&q=${input}`;
 
   const handleChange = (e) => {
     setInput(e.target.value);
   };
 
+  useEffect(() => {
+    if (input === '') {
+      onSearch(input);
+    }
+  }, [input, onSearch]);
+
+  // clears the search field if "ESC" key is entered
   const handleKeyDown = (e) => {
     if (e.keyCode === 27) {
       clear();
@@ -22,7 +22,7 @@ const Search = (props) => {
 
   const search = (e) => {
     e.preventDefault();
-    fetchData(url, setSearchData);
+    onSearch(input);
   };
 
   function clear() {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ItemList from '../items/ItemList';
+import Search from '../layout/Search';
 import PageBtns from '../layout/PageBtns';
 
-const Deals = (props) => {
-  const { fetchData } = props;
+const Deals = ({ fetchData }) => {
   const [deals, setDeals] = useState(null);
   // url that filters for on sale items
   const url =
@@ -12,11 +12,20 @@ const Deals = (props) => {
 
   useEffect(() => {
     fetchData(url, setDeals);
-  }, [fetchData]);
+    // eslint-disable-next-line
+  }, []);
+
+  const onSearch = (query) => {
+    fetchData(
+      `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&isOnSale=true&q=${query}`,
+      setDeals
+    );
+  };
 
   return (
     <>
       <main className='main'>
+        <Search onSearch={onSearch} />
         <ItemList items={deals} />
       </main>
       {deals && <PageBtns />}
