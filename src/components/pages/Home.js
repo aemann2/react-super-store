@@ -6,6 +6,7 @@ import PageBtns from '../layout/PageBtns';
 
 const Home = ({ fetchData }) => {
   const [items, setItems] = useState(null);
+  const [searchFail, setSearchFail] = useState(false);
 
   const url = 'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc';
 
@@ -13,6 +14,12 @@ const Home = ({ fetchData }) => {
     fetchData(url, setItems);
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (items && items.length < 1) {
+      setSearchFail(true);
+    } else setSearchFail(false);
+  }, [items]);
 
   const onSearch = (query) => {
     fetchData(
@@ -27,7 +34,10 @@ const Home = ({ fetchData }) => {
         <Search onSearch={onSearch} />
         <ItemList items={items} />
       </main>
-      {items && <PageBtns />}
+      {items && items.length > 0 && <PageBtns />}
+      {searchFail && (
+        <h3 className='apology'>Sorry, we didn't find anything...</h3>
+      )}
     </>
   );
 };

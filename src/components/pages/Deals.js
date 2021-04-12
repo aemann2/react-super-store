@@ -6,14 +6,20 @@ import PageBtns from '../layout/PageBtns';
 
 const Deals = ({ fetchData }) => {
   const [deals, setDeals] = useState(null);
+  const [searchFail, setSearchFail] = useState(false);
   // url that filters for on sale items
   const url =
     'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&isOnSale=true';
 
   useEffect(() => {
     fetchData(url, setDeals);
-    // eslint-disable-next-line
-  }, []);
+  }, [fetchData]);
+
+  useEffect(() => {
+    if (deals && deals.length < 1) {
+      setSearchFail(true);
+    } else setSearchFail(false);
+  }, [deals]);
 
   const onSearch = (query) => {
     fetchData(
@@ -28,7 +34,10 @@ const Deals = ({ fetchData }) => {
         <Search onSearch={onSearch} />
         <ItemList items={deals} />
       </main>
-      {deals && <PageBtns />}
+      {deals && deals.length > 0 && <PageBtns />}
+      {searchFail && (
+        <h3 className='apology'>Sorry, we didn't find anything...</h3>
+      )}
     </>
   );
 };
