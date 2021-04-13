@@ -11,7 +11,8 @@ const Search = ({ onSearch }) => {
     if (input === '') {
       onSearch(input);
     }
-  }, [input, onSearch]);
+    // eslint-disable-next-line
+  }, [input]);
 
   // clears the search field if "ESC" key is entered
   const handleKeyDown = (e) => {

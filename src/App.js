@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './css/style.css';
 import axios from 'axios';
@@ -8,11 +9,18 @@ import Cart from './components/pages/Cart';
 import ItemPage from './components/pages/ItemPage';
 
 function App() {
+  const [hasMore, setHasMore] = useState(false);
+  const [next, setNext] = useState(null);
   // a generic fetch function that can be passed to pages to do the fetching
   const fetchData = async (endpoint, state) => {
     await axios
       .get(endpoint)
-      .then((response) => state(response.data.items))
+      .then((response) => {
+        console.log(response.data);
+        state(response.data.items);
+        setHasMore(response.data.hasMore);
+        setNext(response.data.next);
+      })
       // using proper error handling
       .catch((err) => {
         if (err.response) {

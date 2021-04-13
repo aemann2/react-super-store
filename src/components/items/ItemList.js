@@ -2,9 +2,7 @@ import React from 'react';
 import ItemCard from './ItemCard';
 import PropTypes from 'prop-types';
 
-const ItemList = (props) => {
-  const { items } = props;
-
+const ItemList = ({ items }) => {
   return (
     <div className='card-container'>
       {items &&
