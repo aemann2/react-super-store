@@ -55,7 +55,9 @@ const Deals = () => {
         <Search onSearch={onSearch} />
         <ItemList items={deals} />
       </main>
-      {deals && deals.length > 0 && <PageBtns hasMore={hasMore} next={next} />}
+      {deals && deals.length > 0 && (
+        <PageBtns hasMore={hasMore} next={next} fetchData={fetchData} />
+      )}
       {searchFail && (
         <h3 className='apology'>Sorry, we didn't find anything...</h3>
       )}

@@ -6,6 +6,7 @@ import PageBtns from '../layout/PageBtns';
 
 const Home = () => {
   const [items, setItems] = useState(null);
+  const [totalItems, setTotalItems] = useState(null);
   const [hasMore, setHasMore] = useState(false);
   const [next, setNext] = useState(null);
   const [searchFail, setSearchFail] = useState(false);
@@ -18,6 +19,7 @@ const Home = () => {
       .get(endpoint)
       .then((response) => {
         setItems(response.data.items);
+        setTotalItems(response.data.total);
         setHasMore(response.data.hasMore);
         setNext(response.data.next);
       })
@@ -57,7 +59,14 @@ const Home = () => {
         <ItemList items={items} />
       </main>
       {/* conditionally renders page buttons if items return and is not an empty array, else an apology is rendered */}
-      {items && items.length > 0 && <PageBtns hasMore={hasMore} next={next} />}
+      {items && items.length > 0 && (
+        <PageBtns
+          totalItems={totalItems}
+          hasMore={hasMore}
+          next={next}
+          fetchData={fetchData}
+        />
+      )}
       {searchFail && (
         <h3 className='apology'>Sorry, we didn't find anything...</h3>
       )}
