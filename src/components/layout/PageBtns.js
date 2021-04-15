@@ -1,38 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PageBtns = ({ totalItems, hasMore, next, fetchData }) => {
+const PageBtns = ({ totalItems, hasMore, next, fetchData, paginationURL }) => {
   const firstPage = () => {
     window.scrollTo(0, 0);
-    fetchData(
-      'https://gp-super-store-api.herokuapp.com/item/list?from=0&size=6&sortDir=asc'
-    );
+    fetchData(paginationURL + '&from=0');
   };
 
   const prevPage = () => {
     window.scrollTo(0, 0);
-    fetchData(
-      `https://gp-super-store-api.herokuapp.com/item/list?from=${
-        next ? next - 13 : totalItems - 11
-      }&size=6&sortDir=asc`
-    );
+    fetchData(paginationURL + `&from=${next ? next - 19 : totalItems - 11}`);
   };
 
   const nextPage = () => {
     window.scrollTo(0, 0);
-    fetchData(
-      `https://gp-super-store-api.herokuapp.com/item/list?from=${
-        next - 1
-      }&size=6&sortDir=asc`
-    );
+    fetchData(paginationURL + `&from=${next - 1}`);
   };
 
   const lastPage = () => {
     window.scrollTo(0, 0);
     fetchData(
-      `https://gp-super-store-api.herokuapp.com/item/list?from=${
-        totalItems - 5
-      }&size=6&sortDir=asc`
+      paginationURL + `&from=${totalItems === next ? next - 1 : totalItems - 2}`
     );
   };
 
@@ -41,7 +29,10 @@ const PageBtns = ({ totalItems, hasMore, next, fetchData }) => {
       <ul className='pagination'>
         <li
           className={
-            next < 8 && next != null ? 'page-item disabled' : 'page-item'
+            (next < totalItems && next > 10) ||
+            (next === null && totalItems > 8)
+              ? 'page-item'
+              : 'page-item disabled'
           }
         >
           <button className='page-link' onClick={firstPage}>
@@ -50,7 +41,10 @@ const PageBtns = ({ totalItems, hasMore, next, fetchData }) => {
         </li>
         <li
           className={
-            next < 8 && next != null ? 'page-item disabled' : 'page-item'
+            (next < totalItems && next > 10) ||
+            (next === null && totalItems > 8)
+              ? 'page-item'
+              : 'page-item disabled'
           }
         >
           <button className='page-link' onClick={prevPage}>
@@ -73,8 +67,11 @@ const PageBtns = ({ totalItems, hasMore, next, fetchData }) => {
 };
 
 PageBtns.propTypes = {
+  totalItems: PropTypes.number.isRequired,
   hasMore: PropTypes.bool.isRequired,
-  next: PropTypes.number.isRequired,
+  next: PropTypes.number,
+  fetchData: PropTypes.func.isRequired,
+  paginationURL: PropTypes.string.isRequired,
 };
 
 export default PageBtns;

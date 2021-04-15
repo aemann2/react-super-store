@@ -6,13 +6,18 @@ import PageBtns from '../layout/PageBtns';
 
 const Home = () => {
   const [items, setItems] = useState(null);
+  const [searchFail, setSearchFail] = useState(false);
+  // state data for pagination
   const [totalItems, setTotalItems] = useState(null);
   const [hasMore, setHasMore] = useState(false);
   const [next, setNext] = useState(null);
-  const [searchFail, setSearchFail] = useState(false);
 
   const url =
-    'https://gp-super-store-api.herokuapp.com/item/list?from=0&size=6&sortDir=asc';
+    'https://gp-super-store-api.herokuapp.com/item/list?from=0&size=9&sortDir=asc';
+
+  // a pagination URL that gets passed to the PageBtns component
+  const paginationURL =
+    'https://gp-super-store-api.herokuapp.com/item/list?size=9&sortDir=asc';
 
   const fetchData = async (endpoint) => {
     await axios
@@ -46,9 +51,10 @@ const Home = () => {
     } else setSearchFail(false);
   }, [items]);
 
+  // onSeach function to be passed down to the Search component
   const onSearch = (query) => {
     fetchData(
-      `https://gp-super-store-api.herokuapp.com/item/list?from=0&size=6&sortDir=asc&q=${query}`
+      `https://gp-super-store-api.herokuapp.com/item/list?from=0&size=9&sortDir=asc&q=${query}`
     );
   };
 
@@ -65,6 +71,7 @@ const Home = () => {
           hasMore={hasMore}
           next={next}
           fetchData={fetchData}
+          paginationURL={paginationURL}
         />
       )}
       {searchFail && (
