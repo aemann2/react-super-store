@@ -11,13 +11,12 @@ const Home = () => {
   const [totalItems, setTotalItems] = useState(null);
   const [hasMore, setHasMore] = useState(false);
   const [next, setNext] = useState(null);
+  const [pageSize] = useState(6);
 
-  const url =
-    'https://gp-super-store-api.herokuapp.com/item/list?from=0&size=9&sortDir=asc';
+  const url = `https://gp-super-store-api.herokuapp.com/item/list?from=0&size=${pageSize}&sortDir=asc`;
 
   // a pagination URL that gets passed to the PageBtns component
-  const paginationURL =
-    'https://gp-super-store-api.herokuapp.com/item/list?size=9&sortDir=asc';
+  const paginationURL = `https://gp-super-store-api.herokuapp.com/item/list?size=${pageSize}&sortDir=asc`;
 
   const fetchData = async (endpoint) => {
     await axios
@@ -42,6 +41,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData(url);
+    //eslint-disable-next-line
   }, []);
 
   // whenever the 'items' state changes, this function checks to see whether the array is 0. if so, setSearchFail gets set to true, else false.
@@ -54,7 +54,7 @@ const Home = () => {
   // onSeach function to be passed down to the Search component
   const onSearch = (query) => {
     fetchData(
-      `https://gp-super-store-api.herokuapp.com/item/list?from=0&size=9&sortDir=asc&q=${query}`
+      `https://gp-super-store-api.herokuapp.com/item/list?from=0&size=${pageSize}&sortDir=asc&q=${query}`
     );
   };
 
@@ -72,6 +72,7 @@ const Home = () => {
           next={next}
           fetchData={fetchData}
           paginationURL={paginationURL}
+          pageSize={pageSize}
         />
       )}
       {searchFail && (

@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const PageBtns = ({ totalItems, hasMore, next, fetchData, paginationURL }) => {
+const PageBtns = ({
+  totalItems,
+  hasMore,
+  next,
+  fetchData,
+  paginationURL,
+  pageSize,
+}) => {
+  // a variable to keep track of the previous page
+  const [prev, setPrev] = useState(null);
+
+  useEffect(() => {
+    setPrev(
+      next
+        ? next - pageSize * 2 - 1
+        : totalItems - (pageSize + (totalItems % pageSize))
+    );
+    //eslint-disable-next-line
+  }, [next]);
+
+  // Functions for pagination
+
   const firstPage = () => {
     window.scrollTo(0, 0);
     fetchData(paginationURL + '&from=0');
@@ -9,7 +30,7 @@ const PageBtns = ({ totalItems, hasMore, next, fetchData, paginationURL }) => {
 
   const prevPage = () => {
     window.scrollTo(0, 0);
-    fetchData(paginationURL + `&from=${next ? next - 19 : totalItems - 11}`);
+    fetchData(paginationURL + `&from=${prev}`);
   };
 
   const nextPage = () => {
@@ -20,7 +41,10 @@ const PageBtns = ({ totalItems, hasMore, next, fetchData, paginationURL }) => {
   const lastPage = () => {
     window.scrollTo(0, 0);
     fetchData(
-      paginationURL + `&from=${totalItems === next ? next - 1 : totalItems - 2}`
+      paginationURL +
+        `&from=${
+          totalItems === next ? next - 1 : totalItems - (totalItems % pageSize)
+        }`
     );
   };
 
@@ -29,8 +53,7 @@ const PageBtns = ({ totalItems, hasMore, next, fetchData, paginationURL }) => {
       <ul className='pagination'>
         <li
           className={
-            (next < totalItems && next > 10) ||
-            (next === null && totalItems > 8)
+            next > pageSize + 1 || next === null
               ? 'page-item'
               : 'page-item disabled'
           }
@@ -41,8 +64,7 @@ const PageBtns = ({ totalItems, hasMore, next, fetchData, paginationURL }) => {
         </li>
         <li
           className={
-            (next < totalItems && next > 10) ||
-            (next === null && totalItems > 8)
+            next > pageSize + 1 || next === null
               ? 'page-item'
               : 'page-item disabled'
           }
@@ -72,6 +94,7 @@ PageBtns.propTypes = {
   next: PropTypes.number,
   fetchData: PropTypes.func.isRequired,
   paginationURL: PropTypes.string.isRequired,
+  pageSize: PropTypes.number.isRequired,
 };
 
 export default PageBtns;

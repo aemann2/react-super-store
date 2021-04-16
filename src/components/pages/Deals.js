@@ -7,14 +7,14 @@ import PageBtns from '../layout/PageBtns';
 const Deals = () => {
   const [deals, setDeals] = useState(null);
   const [searchFail, setSearchFail] = useState(false);
+  const [pageSize] = useState(6);
   // state data for pagination
   const [totalItems, setTotalItems] = useState(null);
   const [hasMore, setHasMore] = useState(false);
   const [next, setNext] = useState(null);
 
   // url that filters for on sale items
-  const url =
-    'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&size=9&isOnSale=true';
+  const url = `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&size=${pageSize}&isOnSale=true`;
 
   const fetchData = async (endpoint) => {
     await axios
@@ -39,6 +39,7 @@ const Deals = () => {
 
   useEffect(() => {
     fetchData(url);
+    //eslint-disable-next-line
   }, []);
 
   // whenever the 'deals' state changes, this function checks to see whether the array is 0. if so, setSearchFail gets set to true, else false.
@@ -51,7 +52,7 @@ const Deals = () => {
   // onSeach function to be passed down to the Search component
   const onSearch = (query) => {
     fetchData(
-      `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&size=9&isOnSale=true&q=${query}`
+      `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&size=${pageSize}&isOnSale=true&q=${query}`
     );
   };
 
@@ -69,6 +70,7 @@ const Deals = () => {
           next={next}
           fetchData={fetchData}
           paginationURL={url}
+          pageSize={pageSize}
         />
       )}
       {searchFail && (
