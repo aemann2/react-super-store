@@ -88,7 +88,7 @@ const PageBtns = ({
 };
 
 PageBtns.propTypes = {
-  totalItems: PropTypes.number.isRequired,
+  totalItems: PropTypes.number,
   hasMore: PropTypes.bool.isRequired,
   next: PropTypes.number,
   fetchData: PropTypes.func.isRequired,

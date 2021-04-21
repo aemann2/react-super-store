@@ -41,8 +41,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchData(url);
-    //eslint-disable-next-line
-  }, []);
+  }, [url]);
 
   // whenever the 'items' state changes, this function checks to see whether the array is 0. if so, setSearchFail gets set to true, else false.
   useEffect(() => {
