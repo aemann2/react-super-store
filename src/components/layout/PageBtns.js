@@ -18,8 +18,7 @@ const PageBtns = ({
         ? next - pageSize * 2 - 1
         : totalItems - (pageSize + (totalItems % pageSize))
     );
-    //eslint-disable-next-line
-  }, [next]);
+  }, [next, pageSize, totalItems]);
 
   // Functions for pagination
 

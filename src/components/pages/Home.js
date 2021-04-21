@@ -3,6 +3,7 @@ import axios from 'axios';
 import Search from '../layout/Search';
 import ItemList from '../items/ItemList';
 import PageBtns from '../layout/PageBtns';
+import { pageSize } from '../../utils/constants';
 
 const Home = () => {
   const [items, setItems] = useState(null);
@@ -11,7 +12,6 @@ const Home = () => {
   const [totalItems, setTotalItems] = useState(null);
   const [hasMore, setHasMore] = useState(false);
   const [next, setNext] = useState(null);
-  const [pageSize] = useState(6);
 
   const url = `https://gp-super-store-api.herokuapp.com/item/list?from=0&size=${pageSize}&sortDir=asc`;
 
