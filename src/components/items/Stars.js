@@ -4,9 +4,7 @@ import full from '../../icons/full.svg';
 import half from '../../icons/half.svg';
 import empty from '../../icons/empty.svg';
 
-const Stars = (props) => {
-  const { rating } = props;
-
+const Stars = ({ rating }) => {
   const stars = [];
   // a loop to push stars to the above array based on rating
   for (let i = stars.length; i < 5; i++) {

@@ -19,8 +19,8 @@ html {
 
 .main {
   display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+  flex-direction: column;
+  align-items: center;
 }
 
 // Component styles //
@@ -29,9 +29,13 @@ html {
 
 @import './components/items';
 
-@import './components/deals.scss';
+@import './components/deals';
 
-@import './components/itempage.scss';
+@import './components/search';
+
+@import './components/pageBtns';
+
+@import './components/itempage';
 
 // Media Queries //
 

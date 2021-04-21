@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Stars from './Stars';
 
-function ItemCard(props) {
-  const { id, name, img, price, rating, sale } = props;
-
+function ItemCard({ id, name, img, price, rating, sale }) {
   // error handling for images that return errors
   const handleError = (e) => {
     e.target.src = 'https://demofree.sirv.com/nope-not-here.jpg';

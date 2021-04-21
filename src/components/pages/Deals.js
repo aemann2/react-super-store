@@ -1,29 +1,83 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import axios from 'axios';
 import ItemList from '../items/ItemList';
+import Search from '../layout/Search';
+import PageBtns from '../layout/PageBtns';
 
-const Deals = (props) => {
-  const { fetchData } = props;
+const Deals = () => {
   const [deals, setDeals] = useState(null);
+  const [searchFail, setSearchFail] = useState(false);
+  const [pageSize] = useState(6);
+  // state data for pagination
+  const [totalItems, setTotalItems] = useState(null);
+  const [hasMore, setHasMore] = useState(false);
+  const [next, setNext] = useState(null);
+
   // url that filters for on sale items
-  const url =
-    'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&isOnSale=true';
+  const url = `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&size=${pageSize}&isOnSale=true`;
+
+  const fetchData = async (endpoint) => {
+    await axios
+      .get(endpoint)
+      .then((response) => {
+        setDeals(response.data.items);
+        setTotalItems(response.data.total);
+        setHasMore(response.data.hasMore);
+        setNext(response.data.next);
+      })
+      // using proper error handling
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response);
+        } else if (err.request) {
+          console.log(err.request);
+        } else {
+          console.log('There has been an error');
+        }
+      });
+  };
 
   useEffect(() => {
-    fetchData(url, setDeals);
-  }, [fetchData]);
+    fetchData(url);
+    //eslint-disable-next-line
+  }, []);
 
-  console.log(deals);
+  // whenever the 'deals' state changes, this function checks to see whether the array is 0. if so, setSearchFail gets set to true, else false.
+  useEffect(() => {
+    if (deals && deals.length < 1) {
+      setSearchFail(true);
+    } else setSearchFail(false);
+  }, [deals]);
+
+  // onSeach function to be passed down to the Search component
+  const onSearch = (query) => {
+    fetchData(
+      `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&size=${pageSize}&isOnSale=true&q=${query}`
+    );
+  };
 
   return (
-    <main className='main'>
-      <ItemList items={deals} />
-    </main>
+    <>
+      <main className='main'>
+        <Search onSearch={onSearch} />
+        <ItemList items={deals} />
+      </main>
+      {/* conditionally renders page buttons if deals return and is not an empty array, else an apology is rendered */}
+      {deals && deals.length > 0 && (
+        <PageBtns
+          hasMore={hasMore}
+          totalItems={totalItems}
+          next={next}
+          fetchData={fetchData}
+          paginationURL={url}
+          pageSize={pageSize}
+        />
+      )}
+      {searchFail && (
+        <h3 className='apology'>Sorry, we didn't find anything...</h3>
+      )}
+    </>
   );
-};
-
-Deals.propTypes = {
-  fetchData: PropTypes.func.isRequired,
 };
 
 export default Deals;
