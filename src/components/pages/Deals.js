@@ -39,8 +39,7 @@ const Deals = () => {
 
   useEffect(() => {
     fetchData(url);
-    //eslint-disable-next-line
-  }, []);
+  }, [url]);
 
   // whenever the 'deals' state changes, this function checks to see whether the array is 0. if so, setSearchFail gets set to true, else false.
   useEffect(() => {
