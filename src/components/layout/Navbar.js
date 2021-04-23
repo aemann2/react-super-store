@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { CartContext } from '../../contexts/CartContext';
 import store from './store.svg';
 
 export default function Navbar() {
+  const { cart } = useContext(CartContext);
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
       <NavLink to='/' className='navbar-brand' href='/'>
@@ -37,6 +39,7 @@ export default function Navbar() {
           <NavLink to='/cart' className='nav-item nav-link'>
             Cart
           </NavLink>
+          <h3>{cart.length}</h3>
         </div>
       </div>
     </nav>

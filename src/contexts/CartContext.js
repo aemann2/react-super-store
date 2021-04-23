@@ -1,11 +1,17 @@
-import React, { useContext, useState, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 
-export const TestContext = createContext();
+export const CartContext = createContext();
 
-export function TestProvider(props) {
-  const [item, setItem] = useState('this is a test');
-  const { children } = props;
+export function CartContextProvider(props) {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
   return (
-    <TestContext.Provider value={{ item }}>{children}</TestContext.Provider>
+    <CartContext.Provider value={{ cart, addToCart }}>
+      {props.children}
+    </CartContext.Provider>
   );
 }

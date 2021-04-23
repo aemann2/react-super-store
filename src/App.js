@@ -5,11 +5,11 @@ import Home from './components/pages/Home';
 import Deals from './components/pages/Deals';
 import Cart from './components/pages/Cart';
 import ItemPage from './components/pages/ItemPage';
-import { TestProvider } from './contexts/CartContext';
+import { CartContextProvider } from './contexts/CartContext';
 
 function App() {
   return (
-    <TestProvider>
+    <CartContextProvider>
       <Router>
         <div className='App'>
           <Navbar />
@@ -31,7 +31,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </TestProvider>
+    </CartContextProvider>
     // wrapping page content in the router
   );
 }

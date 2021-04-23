@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Stars from '../items/Stars';
+import { CartContext } from '../../contexts/CartContext';
 
 const ItemPage = () => {
   // the useParams hook gets the id passed over in Link
   const { id } = useParams();
+  const { addToCart } = useContext(CartContext);
   const url = `https://gp-super-store-api.herokuapp.com/item/${id}`;
 
   const [item, setItem] = useState(null);
@@ -49,6 +51,7 @@ const ItemPage = () => {
       setExceedsStock(true);
     } else {
       setStock(stock - cart);
+      addToCart(item);
       setExceedsStock(false);
     }
     // // Setting the cart and the input value back to 1 after each submission.

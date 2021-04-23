@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
-import { TestContext } from '../../contexts/CartContext';
+import { CartContext } from '../../contexts/CartContext';
 
 const Cart = () => {
-  const { item } = useContext(TestContext);
+  const { cart } = useContext(CartContext);
+  console.log(cart);
   return (
     <div>
       <p>This is the cart page</p>
-      <p>{item}</p>
+      <ul>
+        {cart.map((item) => {
+          return <li>{item.name}</li>;
+        })}
+      </ul>
     </div>
   );
 };
