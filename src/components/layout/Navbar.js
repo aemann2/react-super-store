@@ -38,8 +38,12 @@ export default function Navbar() {
           </NavLink>
           <NavLink to='/cart' className='nav-item nav-link'>
             Cart
+            {cart.length > 0 && (
+              <span className='badge badge-danger navbar__badge'>
+                {cart.length}
+              </span>
+            )}
           </NavLink>
-          <h3>{cart.length}</h3>
         </div>
       </div>
     </nav>

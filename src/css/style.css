@@ -29,6 +29,10 @@ html {
           align-items: center;
 }
 
+.navbar__badge {
+  margin-left: 0.5rem;
+}
+
 .card {
   width: 18rem;
   padding: 1rem;
