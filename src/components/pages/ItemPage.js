@@ -14,6 +14,7 @@ const ItemPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [numberInStock, setNumberInStock] = useState(null);
   const [exceedsStock, setExceedsStock] = useState(false);
+  const [addSuccess, setAddSuccess] = useState(false);
 
   // must define a special fetchData function for single items
   useEffect(() => {
@@ -48,15 +49,21 @@ const ItemPage = () => {
   const addItem = (e) => {
     e.preventDefault();
     if (numberInStock - quantity < 0) {
+      setAddSuccess(false);
       setExceedsStock(true);
     } else {
       setNumberInStock(numberInStock - quantity);
-      addToCart(item);
+      addToCart(item, quantity);
+      setAddSuccess(true);
       setExceedsStock(false);
+      setTimeout(() => {
+        setAddSuccess(false);
+      }, 2000);
     }
     // // Setting the cart and the input value back to 1 after each submission.
     setQuantity(1);
   };
+
   return (
     <main className='main item-page-main'>
       {item && (
@@ -108,6 +115,14 @@ const ItemPage = () => {
             {exceedsStock && (
               <div className='item-page__alert alert alert-danger' role='alert'>
                 You've selected more items than are in stock!
+              </div>
+            )}
+            {addSuccess && (
+              <div
+                className='item-page__alert alert alert-success'
+                role='alert'
+              >
+                Item Added!
               </div>
             )}
           </div>
