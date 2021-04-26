@@ -31,7 +31,7 @@ const Cart = () => {
                 return (
                   <tr>
                     <td>{item.name}</td>
-                    <td>{item.price}</td>
+                    <td>${item.price.toFixed(2)}</td>
                     <td>{item.quantity}</td>
                   </tr>
                 );
@@ -55,7 +55,7 @@ const Cart = () => {
           </Link>
         </div>
       ) : (
-        <p className='cart-table__empty'>Your cart is empty!</p>
+        <h2 className='cart-table__empty'>Your cart is empty!</h2>
       )}
     </div>
   );

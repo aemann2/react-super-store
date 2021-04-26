@@ -23,7 +23,7 @@ function ItemCard({ id, name, img, price, rating, sale }) {
         </Link>
         <Stars rating={rating} />
         <p className='card__price'>
-          <b>${price}</b>
+          <b>${price.toFixed(2)}</b>
           {/* conditionally render the sale badge */}
           {sale && (
             <span className='card--space badge bg-danger text-light '>

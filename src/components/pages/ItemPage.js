@@ -93,7 +93,9 @@ const ItemPage = () => {
             </div>
             <hr className='item-page__hr' />
             <p className='item-page__description'>{item.description}</p>
-            <p className='item-page__price font-weight-bold'>${item.price}</p>
+            <p className='item-page__price font-weight-bold'>
+              ${item.price.toFixed(2)}
+            </p>
             <p className='item-page__stock font-weight-bold'>
               Stock: {numberInStock}
             </p>
