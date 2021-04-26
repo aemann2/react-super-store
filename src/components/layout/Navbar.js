@@ -5,6 +5,11 @@ import store from './store.svg';
 
 export default function Navbar() {
   const { cart } = useContext(CartContext);
+
+  const itemQuantities = cart.map((item) => item.quantity);
+
+  const totalItems = itemQuantities.reduce((cur, acc) => (cur += acc), 0);
+
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
       <NavLink to='/' className='navbar-brand' href='/'>
@@ -40,7 +45,7 @@ export default function Navbar() {
             Cart
             {cart.length > 0 && (
               <span className='badge badge-danger navbar__badge'>
-                {cart.length}
+                {totalItems}
               </span>
             )}
           </NavLink>

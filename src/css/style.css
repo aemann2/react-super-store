@@ -150,6 +150,11 @@ label[for='quantity'] {
           flex: 2;
 }
 
+.item-page__in-cart {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
 .item-page__description, .item-page__price, .item-page__stock {
   font-size: 2rem;
 }
@@ -161,6 +166,31 @@ label[for='quantity'] {
 
 .item-page__alert {
   position: absolute;
+}
+
+.cart-table {
+  padding: 2rem 1rem;
+}
+
+.cart-table__btn {
+  margin-top: 3rem;
+}
+
+.checkout {
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media only screen and (max-width: 950px) {

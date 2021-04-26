@@ -7,7 +7,7 @@ import { CartContext } from '../../contexts/CartContext';
 const ItemPage = () => {
   // the useParams hook gets the id passed over in Link
   const { id } = useParams();
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cart } = useContext(CartContext);
   const url = `https://gp-super-store-api.herokuapp.com/item/${id}`;
 
   const [item, setItem] = useState(null);
@@ -15,6 +15,7 @@ const ItemPage = () => {
   const [numberInStock, setNumberInStock] = useState(null);
   const [exceedsStock, setExceedsStock] = useState(false);
   const [addSuccess, setAddSuccess] = useState(false);
+  const [numberInCart, setNumberInCart] = useState(0);
 
   // must define a special fetchData function for single items
   useEffect(() => {
@@ -35,10 +36,23 @@ const ItemPage = () => {
     fetchData();
   }, [url]);
 
-  // Is this the right way to do this, or is there a better way to set the state of stock using async / await?
+  // Setting the number of items in stock
   useEffect(() => {
     setNumberInStock(item && item.stockCount);
   }, [item]);
+
+  // Update the number of current items in the cart
+  useEffect(() => {
+    if (!item) {
+      return;
+    }
+    if (cart.length > 0) {
+      const n = cart.filter((cartItem) => cartItem.name === item.name);
+      if (n.length > 0) {
+        setNumberInCart(n[0].quantity);
+      }
+    }
+  }, [cart, item]);
 
   // sets cart count based on input value
   const handleChange = (e) => {
@@ -75,7 +89,7 @@ const ItemPage = () => {
           <div className='item-page__text'>
             <h2 className='item-page__title'>{item.name}</h2>
             <div className='item-page__rating'>
-              <Stars rating={item.rating} />
+              <Stars rating={item.avgRating} />
             </div>
             <hr className='item-page__hr' />
             <p className='item-page__description'>{item.description}</p>
@@ -112,6 +126,9 @@ const ItemPage = () => {
               </form>
             </div>
             {/* conditionally render an error if exceedsStock is true */}
+            {numberInCart > 0 && (
+              <p className='item-page__in-cart'>In your cart: {numberInCart}</p>
+            )}
             {exceedsStock && (
               <div className='item-page__alert alert alert-danger' role='alert'>
                 You've selected more items than are in stock!

@@ -28,6 +28,11 @@ label[for='quantity'] {
     flex: 2;
   }
 
+  &__in-cart {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
   &__description,
   &__price,
   &__stock {

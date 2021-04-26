@@ -5,6 +5,7 @@ import Home from './components/pages/Home';
 import Deals from './components/pages/Deals';
 import Cart from './components/pages/Cart';
 import ItemPage from './components/pages/ItemPage';
+import Checkout from './components/pages/Checkout';
 import { CartContextProvider } from './contexts/CartContext';
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route exact path='/cart'>
               <Cart />
+            </Route>
+            <Route exact path='/checkout'>
+              <Checkout />
             </Route>
             {/* routing with a page URL based on the item ID */}
             <Route exact path='/item/:id'>
