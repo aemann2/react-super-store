@@ -9,13 +9,14 @@ const ItemPage = () => {
   const { id } = useParams();
   const { addToCart, cart } = useContext(CartContext);
   const url = `https://gp-super-store-api.herokuapp.com/item/${id}`;
-
+  // state for item data
   const [item, setItem] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [numberInStock, setNumberInStock] = useState(null);
   const [exceedsStock, setExceedsStock] = useState(false);
-  const [addSuccess, setAddSuccess] = useState(false);
   const [numberInCart, setNumberInCart] = useState(0);
+  // controls successful add badge
+  const [addSuccess, setAddSuccess] = useState(false);
 
   // must define a special fetchData function for single items
   useEffect(() => {
@@ -66,9 +67,12 @@ const ItemPage = () => {
       setAddSuccess(false);
       setExceedsStock(true);
     } else {
+      // adds an item to the Context state
       addToCart(item, quantity);
+      // changes local state
       setAddSuccess(true);
       setExceedsStock(false);
+      // add success badge disappears after 2 seconds
       setTimeout(() => {
         setAddSuccess(false);
       }, 2000);
@@ -126,10 +130,12 @@ const ItemPage = () => {
                 </button>
               </form>
             </div>
-            {/* conditionally render an error if exceedsStock is true */}
             {numberInCart > 0 && (
-              <p className='item-page__in-cart'>In your cart: {numberInCart}</p>
+              <p className='item-page__in-cart badge badge-success'>
+                In your cart: {numberInCart}
+              </p>
             )}
+            {/* conditionally render an error if exceedsStock is true */}
             {exceedsStock && (
               <div className='item-page__alert alert alert-danger' role='alert'>
                 You've selected more items than are in stock!

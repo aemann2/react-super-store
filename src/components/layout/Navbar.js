@@ -6,8 +6,9 @@ import store from './store.svg';
 export default function Navbar() {
   const { cart } = useContext(CartContext);
 
+  // pulling item quantites out of the Context cart state
   const itemQuantities = cart.map((item) => item.quantity);
-
+  // totaling the item quantities with a reducer
   const totalItems = itemQuantities.reduce((cur, acc) => (cur += acc), 0);
 
   return (
@@ -43,6 +44,7 @@ export default function Navbar() {
           </NavLink>
           <NavLink to='/cart' className='nav-item nav-link'>
             Cart
+            {/* conditionally rendering the item count next to the Cart link */}
             {cart.length > 0 && (
               <span className='badge badge-danger navbar__badge'>
                 {totalItems}

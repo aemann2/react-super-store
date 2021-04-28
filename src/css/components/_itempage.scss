@@ -44,7 +44,12 @@ label[for='quantity'] {
     margin-bottom: 2rem;
   }
 
+  &__in-cart {
+    position: absolute;
+  }
+
   &__alert {
     position: absolute;
+    margin-top: 3rem;
   }
 }

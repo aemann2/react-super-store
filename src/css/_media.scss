@@ -53,8 +53,14 @@
       margin-bottom: 1rem;
     }
 
+    &__in-cart {
+      position: static;
+      order: 0;
+    }
+
     &__alert {
       position: static;
+      margin-top: 0;
       order: 0;
     }
   }
