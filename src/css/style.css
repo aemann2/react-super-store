@@ -176,6 +176,14 @@ label[for='quantity'] {
   margin-top: 3rem;
 }
 
+.cart-table__input-box {
+  width: 2.5rem;
+}
+
+.cart-table__remove-btn {
+  margin-left: 1rem;
+}
+
 .cart-table__empty {
   margin-top: 5rem;
   display: -webkit-box;

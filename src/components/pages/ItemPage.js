@@ -62,11 +62,10 @@ const ItemPage = () => {
   // if input exceeds stock, an error is displayed
   const addItem = (e) => {
     e.preventDefault();
-    if (numberInStock - quantity < 0) {
+    if (numberInStock - numberInCart < 1 || quantity > numberInStock) {
       setAddSuccess(false);
       setExceedsStock(true);
     } else {
-      setNumberInStock(numberInStock - quantity);
       addToCart(item, quantity);
       setAddSuccess(true);
       setExceedsStock(false);
@@ -97,7 +96,7 @@ const ItemPage = () => {
               ${item.price.toFixed(2)}
             </p>
             <p className='item-page__stock font-weight-bold'>
-              Stock: {numberInStock}
+              Stock: {numberInStock - numberInCart}
             </p>
             <div className='item-page__form-wrap'>
               <form
