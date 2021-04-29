@@ -12,12 +12,12 @@ export default function Navbar() {
   const totalItems = itemQuantities.reduce((cur, acc) => (cur += acc), 0);
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+    <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
       <NavLink to='/' className='navbar-brand' href='/'>
         <img
           src={store}
-          width='30'
-          height='30'
+          width='50'
+          height='50'
           alt=''
           className='d-inline-block align-top'
         />

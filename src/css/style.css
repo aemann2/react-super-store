@@ -33,6 +33,11 @@ html {
   margin-left: 0.5rem;
 }
 
+.nav-link,
+.navbar-brand {
+  font-size: 2rem;
+}
+
 .card {
   width: 18rem;
   padding: 1rem;
@@ -88,7 +93,7 @@ html {
 }
 
 .search {
-  background-color: #ecdbba;
+  background-color: #fac229;
   padding: 0.5rem 0;
   margin-bottom: 3rem;
 }
@@ -313,6 +318,13 @@ label[for='quantity'] {
   .item-page__button {
     margin-left: -1rem;
     margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .nav-link,
+  .navbar-brand {
+    font-size: 1.6rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

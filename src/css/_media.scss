@@ -82,3 +82,9 @@
     }
   }
 }
+@media only screen and (max-width: 350px) {
+  .nav-link,
+  .navbar-brand {
+    font-size: 1.6rem;
+  }
+}
