@@ -2,6 +2,7 @@ import React from 'react';
 import ItemCard from './ItemCard';
 import PropTypes from 'prop-types';
 
+// the component that renders the cards on Home and Deals page
 const ItemList = ({ items }) => {
   return (
     <div className='card-container'>

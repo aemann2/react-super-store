@@ -28,6 +28,11 @@ label[for='quantity'] {
     flex: 2;
   }
 
+  &__in-cart {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
   &__description,
   &__price,
   &__stock {
@@ -39,7 +44,12 @@ label[for='quantity'] {
     margin-bottom: 2rem;
   }
 
+  &__in-cart {
+    position: absolute;
+  }
+
   &__alert {
     position: absolute;
+    margin-top: 3rem;
   }
 }

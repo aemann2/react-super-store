@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const Search = ({ onSearch }) => {
+  // state for controlled component
   const [input, setInput] = useState('');
 
   const handleChange = (e) => {
     setInput(e.target.value);
   };
 
+  // if the input changes and is blank, this runs an empty search
   useEffect(() => {
     if (input === '') {
       onSearch(input);
@@ -21,6 +24,7 @@ const Search = ({ onSearch }) => {
     }
   };
 
+  // runs the onSearch function passed down from the consuming components
   const search = (e) => {
     e.preventDefault();
     onSearch(input);
@@ -61,3 +65,7 @@ const Search = ({ onSearch }) => {
 };
 
 export default Search;
+
+Search.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};

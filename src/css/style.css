@@ -29,6 +29,15 @@ html {
           align-items: center;
 }
 
+.navbar__badge {
+  margin-left: 0.5rem;
+}
+
+.nav-link,
+.navbar-brand {
+  font-size: 2rem;
+}
+
 .card {
   width: 18rem;
   padding: 1rem;
@@ -84,7 +93,7 @@ html {
 }
 
 .search {
-  background-color: #ecdbba;
+  background-color: #fac229;
   padding: 0.5rem 0;
   margin-bottom: 3rem;
 }
@@ -146,6 +155,11 @@ label[for='quantity'] {
           flex: 2;
 }
 
+.item-page__in-cart {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
 .item-page__description, .item-page__price, .item-page__stock {
   font-size: 2rem;
 }
@@ -155,8 +169,63 @@ label[for='quantity'] {
   margin-bottom: 2rem;
 }
 
+.item-page__in-cart {
+  position: absolute;
+}
+
 .item-page__alert {
   position: absolute;
+  margin-top: 3rem;
+}
+
+.cart-table {
+  padding: 2rem 1rem;
+}
+
+.cart-table__btn {
+  margin-top: 3rem;
+}
+
+.cart-table__input-box {
+  width: 2.5rem;
+}
+
+.cart-table__remove-btn {
+  margin-left: 1rem;
+}
+
+.cart-table__empty {
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.checkout {
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media only screen and (max-width: 950px) {
@@ -221,8 +290,15 @@ label[for='quantity'] {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
   }
+  .item-page__in-cart {
+    position: static;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+  }
   .item-page__alert {
     position: static;
+    margin-top: 0;
     -webkit-box-ordinal-group: 1;
         -ms-flex-order: 0;
             order: 0;
@@ -242,6 +318,13 @@ label[for='quantity'] {
   .item-page__button {
     margin-left: -1rem;
     margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .nav-link,
+  .navbar-brand {
+    font-size: 1.6rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

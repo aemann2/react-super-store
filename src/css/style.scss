@@ -25,6 +25,8 @@ html {
 
 // Component styles //
 
+@import './components/navbar';
+
 @import './components/item';
 
 @import './components/items';
@@ -36,6 +38,10 @@ html {
 @import './components/pageBtns';
 
 @import './components/itempage';
+
+@import './components/cart';
+
+@import './components//checkout';
 
 // Media Queries //
 

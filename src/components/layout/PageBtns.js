@@ -9,7 +9,7 @@ const PageBtns = ({
   paginationURL,
   pageSize,
 }) => {
-  // a variable to keep track of the previous page
+  // a variable to keep track of where the previous page starts
   const [prev, setPrev] = useState(null);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const PageBtns = ({
       <ul className='pagination'>
         <li
           className={
-            next > pageSize + 1 || next === null
+            next > pageSize + 1 || (next === null && prev > 0)
               ? 'page-item'
               : 'page-item disabled'
           }
@@ -63,7 +63,7 @@ const PageBtns = ({
         </li>
         <li
           className={
-            next > pageSize + 1 || next === null
+            next > pageSize + 1 || (next === null && prev > 0)
               ? 'page-item'
               : 'page-item disabled'
           }
