@@ -1,6 +1,6 @@
 # [React Super Store](https://react-super-store.netlify.app/)
 
-[![React Super Store](https://user-images.githubusercontent.com/68879246/116838966-3ac63380-ab85-11eb-906a-56ab2e07b22c.png)](https://react-super-store.netlify.app/?target=_blank)
+<a href="https://react-super-store.netlify.app/" target="_blank"><img src='https://user-images.githubusercontent.com/68879246/116838966-3ac63380-ab85-11eb-906a-56ab2e07b22c.png' alt='React Super Store'></a>
 
 An eCommerce app project organized and guided by [@pchertude34](https://github.com/pchertude34). This Super Store has been built out according to **user stories** (see **Project Phases**), with functionality including the ability to:
 
