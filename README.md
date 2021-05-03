@@ -1,6 +1,6 @@
 # [React Super Store](https://react-super-store.netlify.app/)
 
-![React Super Store](https://user-images.githubusercontent.com/68879246/116838966-3ac63380-ab85-11eb-906a-56ab2e07b22c.png)
+[![React Super Store](https://user-images.githubusercontent.com/68879246/116838966-3ac63380-ab85-11eb-906a-56ab2e07b22c.png)](https://react-super-store.netlify.app/)
 
 An eCommerce app project organized and guided by [@pchertude34](https://github.com/pchertude34). This Super Store has been built out according to **user stories** (see **Project Phases**), with functionality including the ability to:
 
@@ -16,6 +16,23 @@ An eCommerce app project organized and guided by [@pchertude34](https://github.c
 Items are pulled from [Super Store API](https://gp-super-store-api.herokuapp.com/docs/), a third-party API with item data
 
 More info on the **Super Store** and the guided project: https://www.guidedprojects.dev/super-store/intro/
+
+## Technology:
+
+React, Super Store API, Context API w/ Hooks, Bootstrap, SASS/BEM, Netlify
+
+## What I learned or used for the first time
+
+- Context API
+- React Router
+- Proptypes
+- How to create a search bar
+- Logic behind "Add to cart" functionality
+- App-level state
+- Styling for multiple pages in React
+- Pagination
+- The useParams hook
+- Using Bootstrap (and not hating it)
 
 ## Project phases:
 
