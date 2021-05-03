@@ -48,9 +48,11 @@ const ItemPage = () => {
       return;
     }
     if (cart.length > 0) {
-      const n = cart.filter((cartItem) => cartItem.name === item.name);
-      if (n.length > 0) {
-        setNumberInCart(n[0].quantity);
+      const numberOfItems = cart.filter(
+        (cartItem) => cartItem.name === item.name
+      );
+      if (numberOfItems.length > 0) {
+        setNumberInCart(numberOfItems[0].quantity);
       }
     }
   }, [cart, item]);
