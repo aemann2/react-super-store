@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CartContext } from '../../contexts/CartContext';
-import store from './store.svg';
+import store from './icons/store.svg';
 
 export default function Navbar() {
   const { cart } = useContext(CartContext);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Search from '../layout/Search';
+import Loader from '../layout/Loader';
 import ItemList from '../items/ItemList';
 import PageBtns from '../layout/PageBtns';
 import { pageSize } from '../../utils/constants';
@@ -12,6 +13,7 @@ const Home = () => {
   const [totalItems, setTotalItems] = useState(null);
   const [hasMore, setHasMore] = useState(false);
   const [next, setNext] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const url = `https://gp-super-store-api.herokuapp.com/item/list?from=0&size=${pageSize}&sortDir=asc`;
 
@@ -19,6 +21,7 @@ const Home = () => {
   const paginationURL = `https://gp-super-store-api.herokuapp.com/item/list?size=${pageSize}&sortDir=asc`;
 
   const fetchData = async (endpoint) => {
+    setLoading(true);
     await axios
       .get(endpoint)
       .then((response) => {
@@ -37,6 +40,7 @@ const Home = () => {
           console.log('There has been an error');
         }
       });
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -61,7 +65,7 @@ const Home = () => {
     <>
       <main className='main'>
         <Search onSearch={onSearch} />
-        <ItemList items={items} />
+        {loading ? <Loader /> : <ItemList items={items} />}
       </main>
       {/* conditionally renders page buttons if items return and is not an empty array, else an apology is rendered */}
       {items && items.length > 0 && (

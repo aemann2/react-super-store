@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ItemList from '../items/ItemList';
 import Search from '../layout/Search';
+import Loader from '../layout/Loader';
 import PageBtns from '../layout/PageBtns';
 
 const Deals = () => {
   const [deals, setDeals] = useState(null);
   const [searchFail, setSearchFail] = useState(false);
   const [pageSize] = useState(6);
+  const [loading, setLoading] = useState(false);
   // state data for pagination
   const [totalItems, setTotalItems] = useState(null);
   const [hasMore, setHasMore] = useState(false);
@@ -17,6 +19,7 @@ const Deals = () => {
   const url = `https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&size=${pageSize}&isOnSale=true`;
 
   const fetchData = async (endpoint) => {
+    setLoading(true);
     await axios
       .get(endpoint)
       .then((response) => {
@@ -35,6 +38,7 @@ const Deals = () => {
           console.log('There has been an error');
         }
       });
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -59,7 +63,7 @@ const Deals = () => {
     <>
       <main className='main'>
         <Search onSearch={onSearch} />
-        <ItemList items={deals} />
+        {loading ? <Loader /> : <ItemList items={deals} />}
       </main>
       {/* conditionally renders page buttons if deals return and is not an empty array, else an apology is rendered */}
       {deals && deals.length > 0 && (
